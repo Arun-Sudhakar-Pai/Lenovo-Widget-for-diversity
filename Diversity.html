@@ -1,0 +1,87 @@
+<head>
+  <!-- Load plotly.js into the DOM -->
+  <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+</head>
+
+<body>
+  <div id='myDiv'>
+    <!-- Plotly chart will be drawn inside this DIV -->
+  </div>
+  <script>
+    var allLabels = ['SEA', 'APJ', 'China', 'Europe', 'USA'];
+    var allValues = [
+      [79, 90, 9, 78, 114],
+      [82, 78, 11, 67, 98],
+      [82, 93, 29, 89, 101]
+    ];
+
+    // 370 total African-American
+    // 336 Hispanic
+    // 394 Asians
+    var ultimateColors = [
+      ['rgb(33, 75, 99)', 'rgb(255, 128, 0)', 'rgb(255, 0, 0)', 'rgb(153, 204, 255)', 'rgb(0, 102, 0)'],
+      ['rgb(33, 75, 99)', 'rgb(255, 128, 0)', 'rgb(255, 0, 0)', 'rgb(153, 204, 255)', 'rgb(0, 102, 0)'],
+      ['rgb(33, 75, 99)', 'rgb(255, 128, 0)', 'rgb(255, 0, 0)', 'rgb(153, 204, 255)', 'rgb(0, 102, 0)']
+    ];
+
+
+    var data = [{
+      values: allValues[0],
+      labels: allLabels,
+      type: 'pie',
+      name: 'African American',
+      marker: {
+        colors: ultimateColors[1]
+      },
+      domain: {
+        row: 0,
+        column: 0
+      },
+      hoverinfo: 'label+percent+name',
+      hole: .5,
+      textinfo: 'none'
+    }, 
+    {
+      values: allValues[1],
+      labels: allLabels,
+      type: 'pie',
+      name: 'Hispanic',
+      marker: {
+        colors: ultimateColors[0]
+      },
+      domain: {
+        row: 1,
+        column: 0
+      },
+      hoverinfo: 'label+percent+name',
+      hole: .5,
+      textinfo: 'none'
+    }, 
+    {
+      values: allValues[2],
+      labels: allLabels,
+      type: 'pie',
+      name: 'Asian',
+      marker: {
+        colors: ultimateColors[2]
+      },
+      domain: {
+        row: 0,
+        column: 1
+      },
+      hoverinfo: 'label+percent+name',
+      hole: .5,
+      textinfo: 'none'
+    }];
+
+    var layout = {
+      title: 'Diversity Percentage Country-wise',
+      height: 500,
+      width: 600,
+      grid: { rows: 2, columns: 2 }
+    };
+
+    Plotly.newPlot('myDiv', data, layout);
+
+  </script>
+</body>
